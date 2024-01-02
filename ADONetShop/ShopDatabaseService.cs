@@ -85,7 +85,7 @@ public class ShopDatabaseService
         SqlParameter[] sqlParameters =
         {
                 new("@category", category) { SqlDbType = SqlDbType.NVarChar }
-            };
+        };
 
         ExecuteNonQueryCommand(createCategorySql, sqlParameters);
     }
@@ -98,7 +98,7 @@ public class ShopDatabaseService
         {
                 new("@productName", productName) {SqlDbType = SqlDbType.NVarChar},
                 new("@categoryId", categoryId) {SqlDbType = SqlDbType.Int}
-            };
+        };
 
         ExecuteNonQueryCommand(insertProductSql, sqlParameters);
     }
@@ -111,7 +111,7 @@ public class ShopDatabaseService
         {
                 new("@productId", productId) {SqlDbType = SqlDbType.Int},
                 new("@newProductName", newProductName) {SqlDbType = SqlDbType.NVarChar}
-            };
+        };
 
         ExecuteNonQueryCommand(updateProductSql, sqlParameters);
     }
