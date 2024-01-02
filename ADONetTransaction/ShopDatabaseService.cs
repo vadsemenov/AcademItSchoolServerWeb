@@ -41,7 +41,7 @@ public class ShopDatabaseService
         return result;
     }
 
-    public void AddCategoryWithoutTransaction(string category)
+    public void AddCategory(string category, bool useTransaction = false)
     {
         var createCategorySql = "Insert Into Category(Category) Values(@category);";
 
@@ -50,7 +50,14 @@ public class ShopDatabaseService
             new("@category", category) { SqlDbType = SqlDbType.NVarChar }
         };
 
-        ExecuteNonQueryCommandWithoutTransaction(createCategorySql, sqlParameters);
+        if (useTransaction)
+        {
+            ExecuteNonQueryCommandWithTransaction(createCategorySql, sqlParameters);
+        }
+        else
+        {
+            ExecuteNonQueryCommandWithoutTransaction(createCategorySql, sqlParameters);
+        }
     }
 
     private void ExecuteNonQueryCommandWithoutTransaction(string sqlQuery, params SqlParameter[] sqlParameters)
@@ -66,18 +73,6 @@ public class ShopDatabaseService
         command.ExecuteNonQuery();
 
         throw new Exception("Exception without transaction.");
-    }
-
-    public void AddCategoryWithTransaction(string category)
-    {
-        var createCategorySql = "Insert Into Category(Category) Values(@category);";
-
-        SqlParameter[] sqlParameters =
-        {
-            new("@category", category) { SqlDbType = SqlDbType.NVarChar }
-        };
-
-        ExecuteNonQueryCommandWithTransaction(createCategorySql, sqlParameters);
     }
 
     private void ExecuteNonQueryCommandWithTransaction(string sqlQuery, params SqlParameter[] sqlParameters)

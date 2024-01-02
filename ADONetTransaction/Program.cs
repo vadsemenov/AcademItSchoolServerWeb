@@ -11,8 +11,8 @@
         {
             var dataService = new ShopDatabaseService(ConnectionString);
 
-            dataService.AddCategoryWithoutTransaction("Category1");
-            dataService.AddCategoryWithTransaction("Category2");
+            dataService.AddCategory("Category1");
+            dataService.AddCategory("Category1", true);
 
             var categories = dataService.GetAllCategoriesByDataSet();
 
