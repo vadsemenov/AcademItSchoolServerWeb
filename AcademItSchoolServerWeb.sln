@@ -11,15 +11,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADONetTransaction", "ADONet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFShop", "EFShop\EFShop.csproj", "{93AB8EAB-B126-45AE-9BC0-38171FF14553}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resharper", "Resharper\Resharper.csproj", "{75C4C167-C57E-421F-B2FE-DDFE00C17A23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resharper", "Resharper\Resharper.csproj", "{75C4C167-C57E-421F-B2FE-DDFE00C17A23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotPeekExample", "DotPeekExample\DotPeekExample.csproj", "{7BB9DAAC-9D88-4229-B18B-701A3401BB0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotPeekExample", "DotPeekExample\DotPeekExample.csproj", "{7BB9DAAC-9D88-4229-B18B-701A3401BB0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionalCompilation", "ConditionalCompilation\ConditionalCompilation.csproj", "{BF7EDC31-99EF-4E02-917A-3067649EEC2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConditionalCompilation", "ConditionalCompilation\ConditionalCompilation.csproj", "{BF7EDC31-99EF-4E02-917A-3067649EEC2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileConfig", "FileConfig\FileConfig.csproj", "{127BB58E-A63B-4B34-86A4-FF3F8EC44C06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignAssembly", "SignAssembly\SignAssembly.csproj", "{DA69E612-2EFD-43B8-BDA0-38292D24379A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildEvent", "BuildEvent\BuildEvent.csproj", "{2B2815D3-B1F8-4C0E-BC51-FE1C937BC3C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{DA69E612-2EFD-43B8-BDA0-38292D24379A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA69E612-2EFD-43B8-BDA0-38292D24379A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA69E612-2EFD-43B8-BDA0-38292D24379A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2815D3-B1F8-4C0E-BC51-FE1C937BC3C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2815D3-B1F8-4C0E-BC51-FE1C937BC3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2815D3-B1F8-4C0E-BC51-FE1C937BC3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2815D3-B1F8-4C0E-BC51-FE1C937BC3C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
