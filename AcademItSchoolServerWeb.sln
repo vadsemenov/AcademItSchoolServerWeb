@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADONetShop", "ADONetShop\AD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADONetTransaction", "ADONetTransaction\ADONetTransaction.csproj", "{061A62AB-B33E-43C1-BD76-944C1C5E3595}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFShop", "EFShop\EFShop.csproj", "{93AB8EAB-B126-45AE-9BC0-38171FF14553}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFShop", "EFShop\EFShop.csproj", "{93AB8EAB-B126-45AE-9BC0-38171FF14553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resharper", "Resharper\Resharper.csproj", "{75C4C167-C57E-421F-B2FE-DDFE00C17A23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{93AB8EAB-B126-45AE-9BC0-38171FF14553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93AB8EAB-B126-45AE-9BC0-38171FF14553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93AB8EAB-B126-45AE-9BC0-38171FF14553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C4C167-C57E-421F-B2FE-DDFE00C17A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C4C167-C57E-421F-B2FE-DDFE00C17A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C4C167-C57E-421F-B2FE-DDFE00C17A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C4C167-C57E-421F-B2FE-DDFE00C17A23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
