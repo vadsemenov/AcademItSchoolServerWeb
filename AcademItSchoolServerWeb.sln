@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFShop", "EFShop\EFShop.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resharper", "Resharper\Resharper.csproj", "{75C4C167-C57E-421F-B2FE-DDFE00C17A23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotPeekExample", "DotPeekExample\DotPeekExample.csproj", "{7BB9DAAC-9D88-4229-B18B-701A3401BB0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{75C4C167-C57E-421F-B2FE-DDFE00C17A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75C4C167-C57E-421F-B2FE-DDFE00C17A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75C4C167-C57E-421F-B2FE-DDFE00C17A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BB9DAAC-9D88-4229-B18B-701A3401BB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB9DAAC-9D88-4229-B18B-701A3401BB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB9DAAC-9D88-4229-B18B-701A3401BB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB9DAAC-9D88-4229-B18B-701A3401BB0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
