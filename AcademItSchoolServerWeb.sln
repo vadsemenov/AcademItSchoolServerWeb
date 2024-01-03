@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionalCompilation", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileConfig", "FileConfig\FileConfig.csproj", "{127BB58E-A63B-4B34-86A4-FF3F8EC44C06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignAssembly", "SignAssembly\SignAssembly.csproj", "{DA69E612-2EFD-43B8-BDA0-38292D24379A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{127BB58E-A63B-4B34-86A4-FF3F8EC44C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{127BB58E-A63B-4B34-86A4-FF3F8EC44C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{127BB58E-A63B-4B34-86A4-FF3F8EC44C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA69E612-2EFD-43B8-BDA0-38292D24379A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA69E612-2EFD-43B8-BDA0-38292D24379A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA69E612-2EFD-43B8-BDA0-38292D24379A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA69E612-2EFD-43B8-BDA0-38292D24379A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
