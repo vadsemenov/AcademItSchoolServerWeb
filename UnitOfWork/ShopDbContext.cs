@@ -102,7 +102,7 @@ public class ShopDbContext : DbContext
             builder.HasOne(orderItem => orderItem.Order)
                 .WithMany(order => order.OrderItems)
                 .HasForeignKey(orderItem => orderItem.OrderId);
- 
+
             builder.HasOne(orderItem => orderItem.Product)
                 .WithMany(product => product.OrderItems)
                 .HasForeignKey(orderItem => orderItem.ProductId);
