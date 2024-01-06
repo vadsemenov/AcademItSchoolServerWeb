@@ -1,6 +1,6 @@
-﻿using EFShop.Model;
+﻿using EFMigrate.Model;
 
-namespace EFShop
+namespace EFMigrate
 {
     public class Program
     {
