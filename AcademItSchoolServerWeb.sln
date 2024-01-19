@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFMigrate", "EFMigrate\EFMi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{8746ED8A-A8DB-42A4-9C2C-B3710DC004AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountriesJson", "CountriesJson\CountriesJson.csproj", "{B45D7828-3829-4EB2-A79F-E9B9333AB55A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{8746ED8A-A8DB-42A4-9C2C-B3710DC004AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8746ED8A-A8DB-42A4-9C2C-B3710DC004AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8746ED8A-A8DB-42A4-9C2C-B3710DC004AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45D7828-3829-4EB2-A79F-E9B9333AB55A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45D7828-3829-4EB2-A79F-E9B9333AB55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45D7828-3829-4EB2-A79F-E9B9333AB55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45D7828-3829-4EB2-A79F-E9B9333AB55A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
