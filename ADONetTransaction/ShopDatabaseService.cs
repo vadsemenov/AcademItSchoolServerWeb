@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using ADONetTransaction.DTO;
 using Microsoft.Data.SqlClient;
 
 namespace ADONetTransaction;
@@ -9,24 +10,21 @@ public class ShopDatabaseService
 
     public ShopDatabaseService(string connectionString) => ConnectionString = connectionString;
 
-    public ICollection<string> GetAllCategoriesByDataSet()
+    public ICollection<Category> GetAllCategoriesByDataSet()
     {
         using var connection = new SqlConnection(ConnectionString);
 
         connection.Open();
 
-        var sql = "SELECT Category.Category FROM Category ";
+        var sql = """SELECT Name """ +
+                  """FROM Category""";
 
         var adapter = new SqlDataAdapter(sql, connection);
 
         var dataSet = new DataSet();
         adapter.Fill(dataSet);
 
-        var result = new List<string>
-        {
-            "=========================",
-            "Products with categories by DataSet"
-        };
+        var result = new List<Category>();
 
         foreach (DataTable table in dataSet.Tables)
         {
@@ -34,7 +32,7 @@ public class ShopDatabaseService
             {
                 var cells = row.ItemArray;
 
-                result.Add($"{cells[0]}");
+                result.Add(new Category(cells[0] as string));
             }
         }
 
@@ -43,11 +41,12 @@ public class ShopDatabaseService
 
     public void AddCategory(string category, bool useTransaction = false)
     {
-        var createCategorySql = "Insert Into Category(Category) Values(@category);";
+        var createCategorySql = """INSERT INTO Category(Name) """ +
+                                """VALUES (@category);""";
 
         SqlParameter[] sqlParameters =
         {
-            new("@category", category) { SqlDbType = SqlDbType.NVarChar }
+            new("@category", category) {SqlDbType = SqlDbType.NVarChar}
         };
 
         if (useTransaction)
@@ -91,11 +90,13 @@ public class ShopDatabaseService
 
             command.ExecuteNonQuery();
 
-            throw new Exception("Exception without transaction.");
+            throw new Exception("Exception with transaction.");
         }
-        catch (Exception exception)
+        catch
         {
             transaction.Rollback();
         }
+
+        transaction.Commit();
     }
 }

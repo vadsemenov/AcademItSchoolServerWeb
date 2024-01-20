@@ -2,7 +2,7 @@
 
 namespace ADONetShop;
 
-public static class ProductExtensions
+public static class EntityExtensions
 {
     public static void PrintProductsToConsole(this ICollection<Product> products)
     {

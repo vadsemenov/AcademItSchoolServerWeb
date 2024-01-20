@@ -16,7 +16,9 @@
 
             var categories = dataService.GetAllCategoriesByDataSet();
 
-            categories.PrintCollectionToConsole();
+            Console.WriteLine("=========================");
+            Console.WriteLine("Categories by DataSet");
+            categories.PrintCategoriesToConsole();
 
             Console.Read();
         }

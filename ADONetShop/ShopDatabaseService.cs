@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Data;
+﻿using System.Data;
 using ADONetShop.DTO;
 using Microsoft.Data.SqlClient;
 
