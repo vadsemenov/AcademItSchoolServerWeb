@@ -1,4 +1,5 @@
 namespace VectorTask.Tests;
+
 public class VectorTests
 {
     [Fact]
