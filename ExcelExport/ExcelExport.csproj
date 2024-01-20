@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="EPPlusService.cs" />
     <Compile Include="Person.cs" />
-    <Compile Include="PersonExtension.cs" />
+    <Compile Include="PersonExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

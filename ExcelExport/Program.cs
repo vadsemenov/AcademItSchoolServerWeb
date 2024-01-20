@@ -7,7 +7,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var persons = PersonExtension.GetRandomPersons();
+        var persons = PersonExtensions.GetRandomPersons();
 
         var excelFile = new FileInfo("Persons.xlsx");
 

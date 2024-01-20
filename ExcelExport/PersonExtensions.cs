@@ -2,7 +2,7 @@
 
 namespace ExcelExport;
 
-public static class PersonExtension
+public static class PersonExtensions
 {
     public static List<Person> GetRandomPersons() =>
         new()
