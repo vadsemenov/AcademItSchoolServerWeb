@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System.Collections;
+using System.Data;
+using ADONetShop.DTO;
 using Microsoft.Data.SqlClient;
 
 namespace ADONetShop;
@@ -9,25 +11,23 @@ public class ShopDatabaseService
 
     public ShopDatabaseService(string connectionString) => ConnectionString = connectionString;
 
-    public ICollection<string> GetAllProductsWithCategoriesByDataSet()
+    public ICollection<Product> GetAllProductsWithCategoriesByDataSet()
     {
         using var connection = new SqlConnection(ConnectionString);
 
         connection.Open();
 
-        var sql = "SELECT Product.Name, Category.Category FROM Product " +
-                  "Left Join Category On Product.Category_Id = Category.Id;";
+        var sql = """SELECT Product.Name, Category.Name """ +
+                  """FROM Product """ +
+                  """LEFT JOIN Category """ +
+                  """  ON Product.CategoryId = Category.Id;""";
 
         var adapter = new SqlDataAdapter(sql, connection);
 
         var dataSet = new DataSet();
         adapter.Fill(dataSet);
 
-        var result = new List<string>
-            {
-                "=========================",
-                "Products with categories by DataSet"
-            };
+        var result = new List<Product>();
 
         foreach (DataTable table in dataSet.Tables)
         {
@@ -35,35 +35,33 @@ public class ShopDatabaseService
             {
                 var cells = row.ItemArray;
 
-                result.Add($"{cells[0]} {cells[1]}");
+                result.Add(new Product(cells[0] as string, cells[1] as string));
             }
         }
 
         return result;
     }
 
-    public ICollection<string> GetAllProductsWithCategoriesByReader()
+    public ICollection<Product> GetAllProductsWithCategoriesByReader()
     {
         using var connection = new SqlConnection(ConnectionString);
 
         connection.Open();
 
-        var sql = "SELECT Product.Name, Category.Category FROM Product " +
-                  "Left Join Category On Product.Category_Id = Category.Id;";
+        var sql = """SELECT Product.Name, Category.Name """ +
+                  """FROM Product """ +
+                  """LEFT JOIN Category """ +
+                  """ ON Product.CategoryId = Category.Id;""";
 
         using var command = new SqlCommand(sql, connection);
 
         using var reader = command.ExecuteReader();
 
-        var result = new List<string>
-            {
-                "=========================",
-                "Products with categories by Reader"
-            };
+        var result = new List<Product>();
 
         while (reader.Read())
         {
-            result.Add($"{reader[0]} {reader[1]}");
+            result.Add(new Product(reader[0] as string, reader[1] as string));
         }
 
         return result;
@@ -71,7 +69,8 @@ public class ShopDatabaseService
 
     public int GetProductsCount()
     {
-        var getProductsCountSql = "Select Count(*) From dbo.Product;";
+        var getProductsCountSql = """SELECT Count(*) """ +
+                                  """FROM dbo.Product;""";
 
         var productsCount = ExecuteScalarCommand(getProductsCountSql);
 
@@ -80,11 +79,12 @@ public class ShopDatabaseService
 
     public void AddCategory(string category)
     {
-        var createCategorySql = "Insert Into Category(Category) Values(@category);";
+        var createCategorySql = """INSERT INTO Category(Name) """ +
+                                """VALUES (@category);""";
 
         SqlParameter[] sqlParameters =
         {
-                new("@category", category) { SqlDbType = SqlDbType.NVarChar }
+            new("@category", category) {SqlDbType = SqlDbType.NVarChar}
         };
 
         ExecuteNonQueryCommand(createCategorySql, sqlParameters);
@@ -92,12 +92,13 @@ public class ShopDatabaseService
 
     public void AddProduct(string productName, int categoryId)
     {
-        var insertProductSql = "Insert Into Product(Name, Category_Id) Values(@productName, @categoryId);";
+        var insertProductSql = """INSERT INTO Product(Name, CategoryId) """ +
+                               """VALUES (@productName, @categoryId);""";
 
         SqlParameter[] sqlParameters =
         {
-                new("@productName", productName) {SqlDbType = SqlDbType.NVarChar},
-                new("@categoryId", categoryId) {SqlDbType = SqlDbType.Int}
+            new("@productName", productName) {SqlDbType = SqlDbType.NVarChar},
+            new("@categoryId", categoryId) {SqlDbType = SqlDbType.Int}
         };
 
         ExecuteNonQueryCommand(insertProductSql, sqlParameters);
@@ -105,12 +106,14 @@ public class ShopDatabaseService
 
     public void UpdateProduct(int productId, string newProductName)
     {
-        var updateProductSql = "Update Product Set Name=@newProductName Where Id=@productId;";
+        var updateProductSql = """UPDATE Product """ +
+                               """SET Name = @newProductName """ +
+                               """WHERE Id = @productId;""";
 
         SqlParameter[] sqlParameters =
         {
-                new("@productId", productId) {SqlDbType = SqlDbType.Int},
-                new("@newProductName", newProductName) {SqlDbType = SqlDbType.NVarChar}
+            new("@productId", productId) {SqlDbType = SqlDbType.Int},
+            new("@newProductName", newProductName) {SqlDbType = SqlDbType.NVarChar}
         };
 
         ExecuteNonQueryCommand(updateProductSql, sqlParameters);
@@ -118,7 +121,8 @@ public class ShopDatabaseService
 
     public void DeleteProductById(int productId)
     {
-        var createCategorySql = "DELETE FROM Product WHERE Id=@productId";
+        var createCategorySql = """DELETE FROM Product """ +
+                                """WHERE Id = @productId""";
 
         SqlParameter[] sqlParameters = { new("@productId", productId) { SqlDbType = SqlDbType.Int } };
 
