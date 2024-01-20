@@ -29,6 +29,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountriesJson", "CountriesJson\CountriesJson.csproj", "{B45D7828-3829-4EB2-A79F-E9B9333AB55A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VectorTask", "VectorTask\VectorTask.csproj", "{EEF86E8E-3DFA-4FEB-BFEE-2ADE063E2AF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NlogExample", "NlogExample\NlogExample.csproj", "{50C47411-B87A-4DBB-B0BD-FBE0379C84E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{B45D7828-3829-4EB2-A79F-E9B9333AB55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B45D7828-3829-4EB2-A79F-E9B9333AB55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B45D7828-3829-4EB2-A79F-E9B9333AB55A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF86E8E-3DFA-4FEB-BFEE-2ADE063E2AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF86E8E-3DFA-4FEB-BFEE-2ADE063E2AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF86E8E-3DFA-4FEB-BFEE-2ADE063E2AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF86E8E-3DFA-4FEB-BFEE-2ADE063E2AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C47411-B87A-4DBB-B0BD-FBE0379C84E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C47411-B87A-4DBB-B0BD-FBE0379C84E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C47411-B87A-4DBB-B0BD-FBE0379C84E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C47411-B87A-4DBB-B0BD-FBE0379C84E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
