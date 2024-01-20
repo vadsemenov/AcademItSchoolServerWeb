@@ -13,6 +13,8 @@ public class EPPlusService : IDisposable
 
     private readonly ExcelWorksheet _excelWorksheet;
 
+    private const int PersonTableColumnsCount = 5;
+
     public EPPlusService(FileInfo excelFile)
     {
         if (excelFile.Exists)
@@ -84,13 +86,13 @@ public class EPPlusService : IDisposable
         bodyStyle.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
 
 
-        using var header = _excelWorksheet.Cells[1, 1, 1, 5];
+        using var header = _excelWorksheet.Cells[1, 1, 1, PersonTableColumnsCount];
         header.StyleName = headerStyle.Name;
 
-        using var body = _excelWorksheet.Cells[2, 1, rowsCount, 5];
+        using var body = _excelWorksheet.Cells[2, 1, rowsCount, PersonTableColumnsCount];
         body.StyleName = bodyStyle.Name;
 
-        using var table = _excelWorksheet.Cells[1, 1, rowsCount, 5];
+        using var table = _excelWorksheet.Cells[1, 1, rowsCount, PersonTableColumnsCount];
         table.AutoFitColumns();
     }
 
