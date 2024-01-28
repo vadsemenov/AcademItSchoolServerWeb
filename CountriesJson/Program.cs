@@ -1,17 +1,19 @@
 ﻿using Newtonsoft.Json;
-using System.Net.Http;
 using CountriesJson.DTO;
-using static System.Net.WebRequestMethods;
 
 namespace CountriesJson
 {
     public class Program
     {
+        private static readonly HttpClient HttpClient = new();
+
+        private const string Url = @"https://restcountries.com/v2/region/americas";
+
         public static void Main(string[] args)
         {
-            var url = @"https://restcountries.com/v2/region/americas";
+            HttpClient.Timeout = new TimeSpan(0, 0, 10, 0);
 
-            var countriesJson = HttpService.GetCountriesJson(url).WaitAsync(new TimeSpan(0, 0, 1, 0));
+            var countriesJson = HttpClient.GetStringAsync(Url);
 
             var countries = JsonConvert.DeserializeObject<List<Country>>(countriesJson.Result);
 
@@ -20,18 +22,15 @@ namespace CountriesJson
                 return;
             }
 
-            var countriesPopulation = countries?
-                .Select(c => c.Population)
-                .Sum();
+            var countriesPopulation = countries
+                .Sum(c => c.Population);
 
-            Console.WriteLine($"Общая численость населения: {countriesPopulation} человек");
+            Console.WriteLine($"Общая численность населения: {countriesPopulation} человек");
 
             var currencies = countries
-                .Select(c => c.Currencies.Select(cu => cu.Name))
-                .SelectMany(c => c)
+                .SelectMany(c => c.Currencies.Select(cu => cu.Name))
                 .Distinct()
                 .ToList();
-
 
             Console.WriteLine("Список всех валют:");
             foreach (var currency in currencies)
