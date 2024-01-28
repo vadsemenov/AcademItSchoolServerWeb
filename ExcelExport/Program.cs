@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.IO;
 
 namespace ExcelExport;
 
@@ -16,6 +15,10 @@ public class Program
         excelService.AddPersonsToExcelDocument(persons);
         excelService.SaveDocument();
 
-        Process.Start(excelFile.FullName);
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = excelFile.FullName,
+            UseShellExecute = true
+        });
     }
 }

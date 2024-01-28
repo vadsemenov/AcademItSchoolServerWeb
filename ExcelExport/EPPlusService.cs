@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
+﻿using System.Drawing;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 
@@ -36,11 +33,14 @@ public class EPPlusService : IDisposable
         _excelWorksheet.Cells[1, 5].Value = "Phone Number";
     }
 
-    public void AddPersonsToExcelDocument(List<Person> persons)
+    public void AddPersonsToExcelDocument(List<Person>? persons, int rowIndex = 1)
     {
-        AddHeaderToPersonsTable();
+        if (persons == null)
+        {
+            throw new ArgumentNullException(nameof(persons));
+        }
 
-        var rowIndex = 1;
+        AddHeaderToPersonsTable();
 
         foreach (var person in persons)
         {
@@ -70,7 +70,6 @@ public class EPPlusService : IDisposable
         headerStyle.Style.Border.Left.Style = ExcelBorderStyle.Thick;
         headerStyle.Style.Border.Right.Style = ExcelBorderStyle.Thick;
         headerStyle.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
-
 
         var bodyStyle = _excelDocument.Workbook.Styles.CreateNamedStyle("MainStyle");
 

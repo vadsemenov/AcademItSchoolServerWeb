@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ExcelExport;
+﻿namespace ExcelExport;
 
 public static class PersonExtensions
 {
