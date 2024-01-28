@@ -4,17 +4,18 @@ using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Extensions.Logging;
 
-namespace NlogExample
+namespace NLogExample
 {
     internal class Program
     {
         public static void Main(string[] args)
         {
             var logger = LogManager.GetCurrentClassLogger();
+            
             try
             {
                 var config = new ConfigurationBuilder()
-                    .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+                    .SetBasePath(Directory.GetCurrentDirectory())
                     .Build();
 
                 var services = new ServiceCollection();

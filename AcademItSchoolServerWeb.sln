@@ -27,15 +27,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFMigrate", "EFMigrate\EFMi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{8746ED8A-A8DB-42A4-9C2C-B3710DC004AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountriesJson", "CountriesJson\CountriesJson.csproj", "{B45D7828-3829-4EB2-A79F-E9B9333AB55A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountriesJson", "CountriesJson\CountriesJson.csproj", "{B45D7828-3829-4EB2-A79F-E9B9333AB55A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VectorTask", "VectorTask\VectorTask.csproj", "{EEF86E8E-3DFA-4FEB-BFEE-2ADE063E2AF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NlogExample", "NlogExample\NlogExample.csproj", "{50C47411-B87A-4DBB-B0BD-FBE0379C84E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLogExample", "NLogExample\NLogExample.csproj", "{50C47411-B87A-4DBB-B0BD-FBE0379C84E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExport", "ExcelExport\ExcelExport.csproj", "{85D3A945-F8EE-4EBA-B23B-E13C4019EE69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorTask.Tests", "VectorTask.Tests\VectorTask.Tests.csproj", "{756A19BA-D7DC-47C4-B76D-33EF09AA30CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VectorTask.Tests", "VectorTask.Tests\VectorTask.Tests.csproj", "{756A19BA-D7DC-47C4-B76D-33EF09AA30CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

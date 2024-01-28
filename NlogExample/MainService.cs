@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace NlogExample;
+namespace NLogExample;
 
 public class MainService
 {
@@ -11,8 +11,13 @@ public class MainService
         _logger = logger;
     }
 
-    public void DoAction(string name)
+    public void DoAction(string? name)
     {
+        if (name == null)
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
+
         _logger.LogDebug(20, "Doing hard work! {Action}", name);
 
         try
@@ -22,7 +27,6 @@ public class MainService
         catch (Exception exception)
         {
             _logger.LogError(exception, "Exception in DoAction method");
-
         }
     }
 }
