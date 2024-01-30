@@ -8,7 +8,7 @@ public static class EntityExtensions
     {
         foreach (var category in categories)
         {
-            Console.WriteLine($"Category - {category.CategoryName}");
+            Console.WriteLine($"Category - {category.Name}");
         }
     }
 }

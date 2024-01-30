@@ -1,4 +1,4 @@
 ﻿namespace ADONetTransaction.DTO
 {
-    public record Category(string? CategoryName);
+    public record Category(string? Name);
 }

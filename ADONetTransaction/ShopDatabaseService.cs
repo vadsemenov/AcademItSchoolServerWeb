@@ -10,16 +10,18 @@ public class ShopDatabaseService
 
     public ShopDatabaseService(string connectionString) => ConnectionString = connectionString;
 
-    public ICollection<Category> GetAllCategoriesByDataSet()
+    public IList<Category> GetAllCategoriesByDataSet()
     {
         using var connection = new SqlConnection(ConnectionString);
 
         connection.Open();
 
-        var sql = """SELECT Name """ +
-                  """FROM Category""";
+        var sql = """
+                  SELECT Name 
+                  FROM Category;
+                  """;
 
-        var adapter = new SqlDataAdapter(sql, connection);
+        using var adapter = new SqlDataAdapter(sql, connection);
 
         var dataSet = new DataSet();
         adapter.Fill(dataSet);
@@ -41,8 +43,10 @@ public class ShopDatabaseService
 
     public void AddCategory(string category, bool useTransaction = false)
     {
-        var createCategorySql = """INSERT INTO Category(Name) """ +
-                                """VALUES (@category);""";
+        var createCategorySql = """
+                                INSERT INTO Category(Name) 
+                                VALUES (@category);
+                                """;
 
         SqlParameter[] sqlParameters =
         {
@@ -80,7 +84,7 @@ public class ShopDatabaseService
 
         connection.Open();
 
-        var transaction = connection.BeginTransaction();
+        using var transaction = connection.BeginTransaction();
 
         try
         {
@@ -91,12 +95,12 @@ public class ShopDatabaseService
             command.ExecuteNonQuery();
 
             throw new Exception("Exception with transaction.");
+
+            transaction.Commit();
         }
         catch
         {
             transaction.Rollback();
         }
-
-        transaction.Commit();
     }
 }
