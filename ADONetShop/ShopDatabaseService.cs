@@ -10,18 +10,20 @@ public class ShopDatabaseService
 
     public ShopDatabaseService(string connectionString) => ConnectionString = connectionString;
 
-    public ICollection<Product> GetAllProductsWithCategoriesByDataSet()
+    public IList<Product> GetAllProductsWithCategoriesByDataSet()
     {
         using var connection = new SqlConnection(ConnectionString);
 
         connection.Open();
 
-        var sql = """SELECT Product.Name, Category.Name """ +
-                  """FROM Product """ +
-                  """LEFT JOIN Category """ +
-                  """  ON Product.CategoryId = Category.Id;""";
+        var sql = """
+                  SELECT Product.Name, Category.Name 
+                  FROM Product 
+                  INNER JOIN Category 
+                    ON Product.CategoryId = Category.Id;
+                  """;
 
-        var adapter = new SqlDataAdapter(sql, connection);
+        using var adapter = new SqlDataAdapter(sql, connection);
 
         var dataSet = new DataSet();
         adapter.Fill(dataSet);
@@ -41,16 +43,18 @@ public class ShopDatabaseService
         return result;
     }
 
-    public ICollection<Product> GetAllProductsWithCategoriesByReader()
+    public IList<Product> GetAllProductsWithCategoriesByReader()
     {
         using var connection = new SqlConnection(ConnectionString);
 
         connection.Open();
 
-        var sql = """SELECT Product.Name, Category.Name """ +
-                  """FROM Product """ +
-                  """LEFT JOIN Category """ +
-                  """ ON Product.CategoryId = Category.Id;""";
+        var sql = """
+                  SELECT Product.Name, Category.Name 
+                  FROM Product 
+                  INNER JOIN Category 
+                   ON Product.CategoryId = Category.Id;
+                  """;
 
         using var command = new SqlCommand(sql, connection);
 
@@ -68,18 +72,20 @@ public class ShopDatabaseService
 
     public int GetProductsCount()
     {
-        var getProductsCountSql = """SELECT Count(*) """ +
-                                  """FROM dbo.Product;""";
+        var getProductsCountSql = """
+                                  SELECT COUNT(*) 
+                                  FROM Product;
+                                  """;
 
-        var productsCount = ExecuteScalarCommand(getProductsCountSql);
-
-        return productsCount;
+        return ExecuteScalarCommand(getProductsCountSql);
     }
 
     public void AddCategory(string category)
     {
-        var createCategorySql = """INSERT INTO Category(Name) """ +
-                                """VALUES (@category);""";
+        var createCategorySql = """
+                                INSERT INTO Category(Name) 
+                                VALUES (@category);
+                                """;
 
         SqlParameter[] sqlParameters =
         {
@@ -91,8 +97,10 @@ public class ShopDatabaseService
 
     public void AddProduct(string productName, int categoryId)
     {
-        var insertProductSql = """INSERT INTO Product(Name, CategoryId) """ +
-                               """VALUES (@productName, @categoryId);""";
+        var insertProductSql = """
+                               INSERT INTO Product(Name, CategoryId) 
+                               VALUES (@productName, @categoryId);
+                               """;
 
         SqlParameter[] sqlParameters =
         {
@@ -105,9 +113,11 @@ public class ShopDatabaseService
 
     public void UpdateProduct(int productId, string newProductName)
     {
-        var updateProductSql = """UPDATE Product """ +
-                               """SET Name = @newProductName """ +
-                               """WHERE Id = @productId;""";
+        var updateProductSql = """
+                               UPDATE Product 
+                               SET Name = @newProductName 
+                               WHERE Id = @productId;
+                               """;
 
         SqlParameter[] sqlParameters =
         {
@@ -120,8 +130,10 @@ public class ShopDatabaseService
 
     public void DeleteProductById(int productId)
     {
-        var createCategorySql = """DELETE FROM Product """ +
-                                """WHERE Id = @productId""";
+        var createCategorySql = """
+                                DELETE FROM Product 
+                                WHERE Id = @productId;
+                                """;
 
         SqlParameter[] sqlParameters = { new("@productId", productId) { SqlDbType = SqlDbType.Int } };
 
