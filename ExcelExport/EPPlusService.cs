@@ -2,7 +2,7 @@
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 
-namespace ExcelExport;
+namespace ExcelExport2;
 
 public class EPPlusService : IDisposable
 {

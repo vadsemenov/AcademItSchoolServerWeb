@@ -10,9 +10,9 @@ public class Program
 
         var excelFile = new FileInfo("Persons.xlsx");
 
-        var excelService = new EPPlusService(excelFile);
+        var excelService = new ClosedXmlService(excelFile);
 
-        excelService.AddPersonsToExcelDocument(persons);
+        excelService.AddPersonsToExcelDocument(persons, 1);
         excelService.SaveDocument();
 
         Process.Start(new ProcessStartInfo

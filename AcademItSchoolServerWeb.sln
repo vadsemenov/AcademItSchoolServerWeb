@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLogExample", "NLogExample\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VectorTask.Tests", "VectorTask.Tests\VectorTask.Tests.csproj", "{756A19BA-D7DC-47C4-B76D-33EF09AA30CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExport", "ExcelExport\ExcelExport.csproj", "{B2FC4B09-1AF8-4322-B5B0-A9BD1DB9F6B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelExport", "ExcelExport\ExcelExport.csproj", "{B2FC4B09-1AF8-4322-B5B0-A9BD1DB9F6B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelExport2", "ExcelExport2\ExcelExport2.csproj", "{0A40D385-C203-4171-B213-E3AEE956A475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{B2FC4B09-1AF8-4322-B5B0-A9BD1DB9F6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2FC4B09-1AF8-4322-B5B0-A9BD1DB9F6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2FC4B09-1AF8-4322-B5B0-A9BD1DB9F6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A40D385-C203-4171-B213-E3AEE956A475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A40D385-C203-4171-B213-E3AEE956A475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A40D385-C203-4171-B213-E3AEE956A475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A40D385-C203-4171-B213-E3AEE956A475}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
