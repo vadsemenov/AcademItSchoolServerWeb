@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ExcelExport2;
 
@@ -35,7 +36,7 @@ public class ClosedXmlService : IDisposable
         _excelWorksheet.Cell(1, 5).Value = "Phone Number";
     }
 
-    public void AddPersonsToExcelDocument(List<Person>? persons, int rowIndex = 1)
+    public void AddPersonsToExcelDocument([NotNull] List<Person>? persons, int rowIndex = 2)
     {
         if (persons == null)
         {
@@ -46,11 +47,11 @@ public class ClosedXmlService : IDisposable
 
         foreach (var person in persons)
         {
-            _excelWorksheet.Cell(rowIndex + 1, 1).Value = rowIndex.ToString();
-            _excelWorksheet.Cell(rowIndex + 1, 2).Value = person.FirstName;
-            _excelWorksheet.Cell(rowIndex + 1, 3).Value = person.SecondName;
-            _excelWorksheet.Cell(rowIndex + 1, 4).Value = person.Age;
-            _excelWorksheet.Cell(rowIndex + 1, 5).Value = person.PhoneNumber;
+            _excelWorksheet.Cell(rowIndex, 1).Value = rowIndex.ToString();
+            _excelWorksheet.Cell(rowIndex, 2).Value = person.FirstName;
+            _excelWorksheet.Cell(rowIndex, 3).Value = person.SecondName;
+            _excelWorksheet.Cell(rowIndex, 4).Value = person.Age;
+            _excelWorksheet.Cell(rowIndex, 5).Value = person.PhoneNumber;
 
             rowIndex++;
         }

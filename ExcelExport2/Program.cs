@@ -12,7 +12,7 @@ public class Program
 
         var excelService = new ClosedXmlService(excelFile);
 
-        excelService.AddPersonsToExcelDocument(persons, 1);
+        excelService.AddPersonsToExcelDocument(persons, 2);
         excelService.SaveDocument();
 
         Process.Start(new ProcessStartInfo
