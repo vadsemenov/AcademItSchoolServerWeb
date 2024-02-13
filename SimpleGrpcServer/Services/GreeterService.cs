@@ -1,0 +1,47 @@
+using Grpc.Core;
+using SimpleGrpcServer.Logic;
+
+namespace SimpleGrpcServer.Services
+{
+    public class GreeterService : Greeter.GreeterBase
+    {
+        private readonly ILogger<GreeterService> _logger;
+        public GreeterService(ILogger<GreeterService> logger)
+        {
+            _logger = logger;
+        }
+
+        public override Task<HelloResponse> SayHello(HelloRequest request, ServerCallContext context)
+        {
+            return Task.FromResult(new HelloResponse
+            {
+                Message = "Hello " + request.Name
+            });
+        }
+
+        public override Task<CalculateSumResponse> CalculateSum(CalculateSumRequest request, ServerCallContext context)
+        {
+            return Task.FromResult(new CalculateSumResponse
+            {
+                Sum = request.Numbers.Sum()
+            });
+        }
+
+        public override Task<FindFibonacciNumberResponse> FindFibonacciNumber(FindFibonacciNumberRequest request, ServerCallContext context)
+        {
+            if (request.FibonacciNumber < 0)
+            {
+                _logger.LogError("Bad Fibonacci number");
+
+                throw new RpcException(Status.DefaultCancelled, "Bad Fibonacci number");
+            }
+
+            var fibonacciNumber = MathService.FindFibonacciNumber(request.FibonacciNumber);
+
+            return Task.FromResult(new FindFibonacciNumberResponse
+            {
+                Number = fibonacciNumber
+            });
+        }
+    }
+}
