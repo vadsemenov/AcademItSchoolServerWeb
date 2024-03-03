@@ -6,6 +6,7 @@ namespace SimpleGrpcServer.Services
     public class GreeterService : Greeter.GreeterBase
     {
         private readonly ILogger<GreeterService> _logger;
+
         public GreeterService(ILogger<GreeterService> logger)
         {
             _logger = logger;
@@ -27,7 +28,7 @@ namespace SimpleGrpcServer.Services
             });
         }
 
-        public override Task<FindFibonacciNumberResponse> FindFibonacciNumber(FindFibonacciNumberRequest request, ServerCallContext context)
+        public override Task<GetFibonacciNumberResponse> GetFibonacciNumber(GetFibonacciNumberRequest request, ServerCallContext context)
         {
             if (request.FibonacciNumber < 0)
             {
@@ -36,9 +37,9 @@ namespace SimpleGrpcServer.Services
                 throw new RpcException(Status.DefaultCancelled, "Bad Fibonacci number");
             }
 
-            var fibonacciNumber = MathService.FindFibonacciNumber(request.FibonacciNumber);
+            var fibonacciNumber = MathService.GetFibonacciNumber(request.FibonacciNumber);
 
-            return Task.FromResult(new FindFibonacciNumberResponse
+            return Task.FromResult(new GetFibonacciNumberResponse
             {
                 Number = fibonacciNumber
             });

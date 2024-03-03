@@ -5,26 +5,24 @@ namespace SimpleGrpcClient
 {
     public class Program
     {
-        private static Greeter.GreeterClient? _client;
+        private static Greeter.GreeterClient _client = null!;
 
         public static void Main(string[] args)
         {
             using var channel = GrpcChannel.ForAddress("http://localhost:5283");
             _client = new Greeter.GreeterClient(channel);
 
-            var waitTime = new TimeSpan(0, 0, 1);
-
-            var helloStringTask = GetHello("User").WaitAsync(waitTime);
+            var helloStringTask = GetHello("User");
 
             Console.WriteLine($"Message from server: {helloStringTask.Result}");
 
             var numbers = new List<int> { 1, 3, 5, 6, };
-            var calculateSumResponseTask = GetSum(numbers).WaitAsync(waitTime);
+            var calculateSumResponseTask = GetSum(numbers);
 
             Console.WriteLine($"Sum result: {calculateSumResponseTask.Result}");
 
             var fibonacciNumber = 10;
-            var findFibonacciNumberTask = FindFibonacciNumber(fibonacciNumber).WaitAsync(waitTime);
+            var findFibonacciNumberTask = GetFibonacciNumber(fibonacciNumber);
 
             Console.WriteLine($"10 Fibonacci number: {findFibonacciNumberTask.Result}");
 
@@ -33,30 +31,30 @@ namespace SimpleGrpcClient
 
         private static async Task<string> GetHello(string name)
         {
-            var response = await _client!.SayHelloAsync(new HelloRequest
+            var response = await _client.SayHelloAsync(new HelloRequest
             {
                 Name = name
-            });
+            }, deadline: DateTime.UtcNow.AddSeconds(1));
 
             return response.Message;
         }
 
         private static async Task<int> GetSum(List<int> numbers)
         {
-            var response = await _client!.CalculateSumAsync(new CalculateSumRequest
+            var response = await _client.CalculateSumAsync(new CalculateSumRequest
             {
                 Numbers = { numbers }
-            });
+            }, deadline: DateTime.UtcNow.AddSeconds(1));
 
             return response.Sum;
         }
 
-        private static async Task<int> FindFibonacciNumber(int fibonacciNumber)
+        private static async Task<int> GetFibonacciNumber(int fibonacciNumber)
         {
-            var response = await _client!.FindFibonacciNumberAsync(new FindFibonacciNumberRequest
+            var response = await _client.GetFibonacciNumberAsync(new GetFibonacciNumberRequest
             {
                 FibonacciNumber = fibonacciNumber
-            });
+            }, deadline: DateTime.UtcNow.AddSeconds(1));
 
             return response.Number;
         }
