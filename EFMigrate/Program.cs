@@ -1,4 +1,5 @@
 ﻿using EFMigrate.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFMigrate
 {
@@ -7,6 +8,8 @@ namespace EFMigrate
         public static void Main(string[] args)
         {
             using var shopContext = new ShopDbContext();
+
+            shopContext.Database.Migrate();
 
             FillDatabase(shopContext);
 
@@ -17,6 +20,7 @@ namespace EFMigrate
             {
                 Console.WriteLine(product.Name);
             }
+
             Console.WriteLine();
 
             var customersMaxSpentMoney = ShopService.GetClientsMaxSpentMoney(shopContext);
@@ -27,8 +31,10 @@ namespace EFMigrate
                 var customer = customerMoneyPair.Key;
                 var money = customerMoneyPair.Value;
 
-                Console.WriteLine($"Клиент {customer.FirstName} {customer.MiddleName} {customer.LastName} потратил: {money}");
+                Console.WriteLine(
+                    $"Клиент {customer.FirstName} {customer.MiddleName} {customer.LastName} потратил: {money}");
             }
+
             Console.WriteLine();
 
             var categoriesProductsCount = ShopService.GetCategoriesProductsCount(shopContext);
@@ -39,7 +45,7 @@ namespace EFMigrate
                 var categoryName = categoryNameProductCountPair.Key;
                 var productsCount = categoryNameProductCountPair.Value;
 
-                Console.WriteLine($"Категория - {categoryName}, колличество товара - {productsCount}");
+                Console.WriteLine($"Категория - {categoryName}, количество товара - {productsCount}");
             }
 
             Console.Read();
@@ -47,68 +53,69 @@ namespace EFMigrate
 
         public static void FillDatabase(ShopDbContext shopContext)
         {
-            var toyCar = new Product()
+            var toyCar = new Product
             {
                 Name = "Toy car",
                 Price = 100
             };
 
-            var doll = new Product()
+            var doll = new Product
             {
                 Name = "Doll",
                 Price = 300
             };
 
-            var toyotaCar = new Product()
+            var toyotaCar = new Product
             {
                 Name = "Toyota car",
                 Price = 1_000_000
             };
 
-            var mercedesCar = new Product()
+            var mercedesCar = new Product
             {
                 Name = "Mercedes car",
                 Price = 3_000_000
             };
 
-            var potato = new Product()
+            var potato = new Product
             {
                 Name = "Potato",
                 Price = 90
             };
 
-            var onion = new Product()
+            var onion = new Product
             {
                 Name = "Onion",
                 Price = 45
             };
 
-            var toyCategory = new Category()
+            var toyCategory = new Category
             {
                 Name = "Toy"
             };
 
-            var plasticProductCategory = new Category()
+            var plasticProductCategory = new Category
             {
                 Name = "Plastic product"
             };
 
-            var carCategory = new Category()
+            var carCategory = new Category
             {
                 Name = "Car"
             };
 
-            var foodCategory = new Category()
+            var foodCategory = new Category
             {
                 Name = "Food"
             };
 
-            var vegetableCategory = new Category()
+            var vegetableCategory = new Category
             {
                 Name = "Vegetable"
             };
 
-            shopContext.Categories.AddRange(plasticProductCategory, toyCategory, carCategory, foodCategory, vegetableCategory);
+            shopContext.Categories.AddRange(plasticProductCategory, toyCategory, carCategory, foodCategory,
+                vegetableCategory);
             shopContext.Products.AddRange(toyCar, doll, toyotaCar, mercedesCar, onion, potato);
 
             toyCar.Categories.Add(toyCategory);
@@ -165,31 +172,31 @@ namespace EFMigrate
 
             shopContext.Customers.AddRange(customer1, customer2, customer3, customer4);
 
-            var order1 = new Order()
+            var order1 = new Order
             {
                 Customer = customer1,
                 OrderDate = new DateTime(2015, 10, 10, 1, 1, 12)
             };
 
-            var order2 = new Order()
+            var order2 = new Order
             {
                 Customer = customer2,
                 OrderDate = new DateTime(2017, 12, 11, 13, 12, 20)
             };
 
-            var order3 = new Order()
+            var order3 = new Order
             {
                 Customer = customer3,
                 OrderDate = new DateTime(2021, 3, 11, 11, 25, 17)
             };
 
-            var order4 = new Order()
+            var order4 = new Order
             {
                 Customer = customer4,
                 OrderDate = new DateTime(2010, 4, 15, 17, 15, 10)
             };
 
-            var order5 = new Order()
+            var order5 = new Order
             {
                 Customer = customer1,
                 OrderDate = new DateTime(2012, 2, 9, 12, 12, 15)
