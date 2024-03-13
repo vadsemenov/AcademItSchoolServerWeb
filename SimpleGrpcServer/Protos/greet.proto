@@ -27,7 +27,7 @@ message CalculateSumResponse {
 }
 
 message GetFibonacciNumberRequest {
-  int32 fibonacci_number = 1;
+  int32 index_of_fibonacci_number = 1;
 }
 
 message GetFibonacciNumberResponse {

@@ -30,14 +30,14 @@ namespace SimpleGrpcServer.Services
 
         public override Task<GetFibonacciNumberResponse> GetFibonacciNumber(GetFibonacciNumberRequest request, ServerCallContext context)
         {
-            if (request.FibonacciNumber < 0)
+            if (request.IndexOfFibonacciNumber < 0)
             {
                 _logger.LogError("Bad Fibonacci number");
 
                 throw new RpcException(Status.DefaultCancelled, "Bad Fibonacci number");
             }
 
-            var fibonacciNumber = MathService.GetFibonacciNumber(request.FibonacciNumber);
+            var fibonacciNumber = MathService.GetFibonacciNumber(request.IndexOfFibonacciNumber);
 
             return Task.FromResult(new GetFibonacciNumberResponse
             {

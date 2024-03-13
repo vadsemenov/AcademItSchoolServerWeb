@@ -2,18 +2,18 @@
 
 public static class MathService
 {
-    public static int GetFibonacciNumber(int fibonacciNumber)
+    public static int GetFibonacciNumber(int indexOfFibonacciNumber)
     {
-        var currentNumber = 0;
-        var nextNumber = 1;
+        var currentFibonacciNumber = 0;
+        var nextFibonacciNumber = 1;
 
-        for (var i = 0; i < fibonacciNumber; i++)
+        for (var i = 0; i < indexOfFibonacciNumber; i++)
         {
-            var temp = currentNumber;
-            currentNumber = nextNumber;
-            nextNumber = temp + nextNumber;
+            var temp = currentFibonacciNumber;
+            currentFibonacciNumber = nextFibonacciNumber;
+            nextFibonacciNumber = temp + nextFibonacciNumber;
         }
 
-        return currentNumber;
+        return currentFibonacciNumber;
     }
 }

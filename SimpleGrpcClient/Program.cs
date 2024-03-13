@@ -21,8 +21,8 @@ namespace SimpleGrpcClient
 
             Console.WriteLine($"Sum result: {calculateSumResponseTask.Result}");
 
-            var fibonacciNumber = 10;
-            var findFibonacciNumberTask = GetFibonacciNumber(fibonacciNumber);
+            var indexOfFibonacciNumber = 10;
+            var findFibonacciNumberTask = GetFibonacciNumber(indexOfFibonacciNumber);
 
             Console.WriteLine($"10 Fibonacci number: {findFibonacciNumberTask.Result}");
 
@@ -49,11 +49,11 @@ namespace SimpleGrpcClient
             return response.Sum;
         }
 
-        private static async Task<int> GetFibonacciNumber(int fibonacciNumber)
+        private static async Task<int> GetFibonacciNumber(int indexOfFibonacciNumber)
         {
             var response = await _client.GetFibonacciNumberAsync(new GetFibonacciNumberRequest
             {
-                FibonacciNumber = fibonacciNumber
+                IndexOfFibonacciNumber = indexOfFibonacciNumber
             }, deadline: DateTime.UtcNow.AddSeconds(1));
 
             return response.Number;
