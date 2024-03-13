@@ -26,49 +26,41 @@ public class ClosedXmlService : IDisposable
         _excelWorksheet = _excelWorkBook.Worksheets.Add("Persons");
     }
 
-    private void AddHeaderToPersonsTable(ref int rowIndex)
+    private void AddHeaderToPersonsTable()
     {
-        _excelWorksheet.Cell(rowIndex, 1).Value = "#";
-        _excelWorksheet.Cell(rowIndex, 2).Value = "First Name";
-        _excelWorksheet.Cell(rowIndex, 3).Value = "Second Name";
-        _excelWorksheet.Cell(rowIndex, 4).Value = "Age";
-        _excelWorksheet.Cell(rowIndex, 5).Value = "Phone Number";
-
-        rowIndex++;
+        _excelWorksheet.Cell(1, 1).Value = "#";
+        _excelWorksheet.Cell(1, 2).Value = "First Name";
+        _excelWorksheet.Cell(1, 3).Value = "Second Name";
+        _excelWorksheet.Cell(1, 4).Value = "Age";
+        _excelWorksheet.Cell(1, 5).Value = "Phone Number";
     }
 
-    public void AddPersonsToExcelDocument(List<Person> persons, int rowIndex = 1)
+    public void AddPersonsToExcelDocument(List<Person>? persons, int rowIndex = 2)
     {
         if (persons == null)
         {
             throw new ArgumentNullException(nameof(persons));
         }
 
-        var startTableRowIndex = rowIndex;
-        var endTableRowIndex = rowIndex;
-
-        AddHeaderToPersonsTable(ref endTableRowIndex);
-
-        var rowNumber = 1;
+        AddHeaderToPersonsTable();
 
         foreach (var person in persons)
         {
-            _excelWorksheet.Cell(endTableRowIndex, 1).Value = rowNumber.ToString();
-            _excelWorksheet.Cell(endTableRowIndex, 2).Value = person.FirstName;
-            _excelWorksheet.Cell(endTableRowIndex, 3).Value = person.SecondName;
-            _excelWorksheet.Cell(endTableRowIndex, 4).Value = person.Age;
-            _excelWorksheet.Cell(endTableRowIndex, 5).Value = person.PhoneNumber;
+            _excelWorksheet.Cell(rowIndex, 1).Value = (rowIndex - 1).ToString();
+            _excelWorksheet.Cell(rowIndex, 2).Value = person.FirstName;
+            _excelWorksheet.Cell(rowIndex, 3).Value = person.SecondName;
+            _excelWorksheet.Cell(rowIndex, 4).Value = person.Age;
+            _excelWorksheet.Cell(rowIndex, 5).Value = person.PhoneNumber;
 
-            endTableRowIndex++;
-            rowNumber++;
+            rowIndex++;
         }
 
-        FormatPersonsTable(startTableRowIndex, --endTableRowIndex);
+        FormatPersonsTable(rowIndex);
     }
 
-    private void FormatPersonsTable(int startTableRowIndex, int endTableRowIndex)
+    private void FormatPersonsTable(int rowsCount)
     {
-        var header = _excelWorksheet.Range(startTableRowIndex, 1, startTableRowIndex, PersonTableColumnsCount);
+        var header = _excelWorksheet.Range(1, 1, 1, PersonTableColumnsCount);
 
         header.Style.Fill.PatternType = XLFillPatternValues.Solid;
         header.Style.Fill.SetBackgroundColor(XLColor.AntiFlashWhite);
@@ -80,7 +72,7 @@ public class ClosedXmlService : IDisposable
         header.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
         header.Style.Border.OutsideBorder = XLBorderStyleValues.Thick;
 
-        var body = _excelWorksheet.Range(startTableRowIndex + 1, 1, endTableRowIndex, PersonTableColumnsCount);
+        var body = _excelWorksheet.Range(2, 1, rowsCount, PersonTableColumnsCount);
 
         body.Style.Fill.PatternType = XLFillPatternValues.Solid;
         body.Style.Fill.SetBackgroundColor(XLColor.Beige);
