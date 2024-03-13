@@ -55,6 +55,8 @@ public class ClosedXmlService : IDisposable
             rowIndex++;
         }
 
+        rowIndex--;
+
         FormatPersonsTable(rowIndex);
     }
 
