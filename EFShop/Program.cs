@@ -22,10 +22,10 @@ namespace EFShop
             }
             Console.WriteLine();
 
-            var customersMaxSpentMoney = ShopService.GetClientsMaxSpentMoney(shopContext);
+            var customersSpentMoney = ShopService.GetClientsSpentMoney(shopContext);
 
             Console.WriteLine("Сколько каждый клиент потратил денег за все время:");
-            foreach (var customerMoneyPair in customersMaxSpentMoney)
+            foreach (var customerMoneyPair in customersSpentMoney)
             {
                 var customer = customerMoneyPair.Key;
                 var money = customerMoneyPair.Value;
@@ -37,10 +37,10 @@ namespace EFShop
             var categoriesProductsCount = ShopService.GetCategoriesProductsCount(shopContext);
 
             Console.WriteLine("Сколько товаров каждой категории купили:");
-            foreach (var categoryNameProductCountPair in categoriesProductsCount)
+            foreach (var categoryNameProductsCountPair in categoriesProductsCount)
             {
-                var categoryName = categoryNameProductCountPair.Key;
-                var productsCount = categoryNameProductCountPair.Value;
+                var categoryName = categoryNameProductsCountPair.Key;
+                var productsCount = categoryNameProductsCountPair.Value;
 
                 Console.WriteLine($"Категория - {categoryName}, количество товара - {productsCount}");
             }

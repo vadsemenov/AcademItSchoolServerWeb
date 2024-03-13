@@ -23,7 +23,7 @@ public static class ShopService
             .ToList();
     }
 
-    public static Dictionary<Customer, decimal> GetClientsMaxSpentMoney(ShopDbContext shopContext)
+    public static Dictionary<Customer, decimal> GetClientsSpentMoney(ShopDbContext shopContext)
     {
         return shopContext.Orders
             .GroupBy(o => o.Customer)

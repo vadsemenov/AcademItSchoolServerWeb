@@ -81,7 +81,8 @@ public class ShopDbContext : DbContext
         modelBuilder.Entity<Order>(builder =>
         {
             builder.HasOne(order => order.Customer)
-                .WithMany(customer => customer.Orders);
+                .WithMany(customer => customer.Orders)
+                .HasForeignKey(order => order.CustomerId);
 
             builder.Property(order => order.OrderDate)
                 .HasColumnType("date");
@@ -96,8 +97,6 @@ public class ShopDbContext : DbContext
             builder.HasOne(orderItem => orderItem.Product)
                 .WithMany(product => product.OrderItems)
                 .HasForeignKey(orderItem => orderItem.ProductId);
-
-            builder.Property(orderItem => orderItem.Count);
         });
     }
 }
