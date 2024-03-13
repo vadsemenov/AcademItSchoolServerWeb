@@ -2,7 +2,6 @@
 
 namespace UnitOfWork.Repositories.Interfaces;
 
-public interface ICustomerRepository: IMainRepository<Customer>
+public interface ICustomerRepository : IMainRepository<Customer>
 {
-    
 }

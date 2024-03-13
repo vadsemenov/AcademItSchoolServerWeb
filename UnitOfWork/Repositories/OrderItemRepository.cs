@@ -12,7 +12,7 @@ public class OrderItemRepository : BaseEfRepository<OrderItem>, IOrderItemReposi
 
     public List<Product> GetMostFrequentlyPurchasedProducts()
     {
-        var products = DbSet
+        return DbSet
             .GroupBy(o => o.Product)
             .Select(g => new
             {
@@ -25,7 +25,5 @@ public class OrderItemRepository : BaseEfRepository<OrderItem>, IOrderItemReposi
                 .Max())
             .Select(pg => pg.Product)
             .ToList();
-
-        return products;
     }
 }

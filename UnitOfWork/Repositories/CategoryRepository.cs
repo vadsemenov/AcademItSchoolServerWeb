@@ -12,14 +12,12 @@ public class CategoryRepository : BaseEfRepository<Category>, ICategoryRepositor
 
     public Dictionary<string, int> GetCategoriesProductsCount()
     {
-        var categoriesProductsCount = DbSet
+        return DbSet
             .Select(c => new
             {
                 c.Name,
-                ProductsCount = c.Products.SelectMany(p => p.OrderItems).Select(oi => oi.Count).Sum()
+                ProductsCount = c.Products.SelectMany(p => p.OrderItems).Sum(oi => oi.Count)
             })
             .ToDictionary(k => k.Name, v => v.ProductsCount);
-
-        return categoriesProductsCount;
     }
 }

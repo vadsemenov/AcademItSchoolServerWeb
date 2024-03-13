@@ -2,7 +2,6 @@
 
 namespace UnitOfWork.Repositories.Interfaces;
 
-public interface IProductRepository: IMainRepository<Product>
+public interface IProductRepository : IMainRepository<Product>
 {
-
 }

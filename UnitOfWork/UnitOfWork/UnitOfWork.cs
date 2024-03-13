@@ -11,10 +11,20 @@ public class UnitOfWork : IUnitOfWork
 
     private IDbContextTransaction? _transaction;
 
-    public UnitOfWork(DbContext dbContext) => _dbContext = dbContext;
+    private bool _disposed;
 
-    public T GetRepository<T>() where T : class
+    public UnitOfWork(DbContext dbContext)
     {
+        _dbContext = dbContext ?? throw new Exception("DbContext is null!");
+    }
+
+    public T GetRepository<T>() where T : class, IRepository
+    {
+        if (_disposed)
+        {
+            throw new MemberAccessException("UnitOfWork is already disposed!");
+        }
+
         if (typeof(T) == typeof(ICategoryRepository))
         {
             return (new CategoryRepository(_dbContext) as T)!;
@@ -40,14 +50,19 @@ public class UnitOfWork : IUnitOfWork
             return (new ProductRepository(_dbContext) as T)!;
         }
 
-        throw new Exception($"Repository {nameof(T)} does not exist!");
+        throw new Exception($"Repository {typeof(T)} does not exist!");
     }
 
     public void BeginTransaction()
     {
+        if (_disposed)
+        {
+            throw new MemberAccessException("UnitOfWork is already disposed!");
+        }
+
         if (_transaction != null)
         {
-            return;
+            throw new Exception("There is already an existing transaction!");
         }
 
         _transaction = _dbContext.Database.BeginTransaction();
@@ -55,6 +70,11 @@ public class UnitOfWork : IUnitOfWork
 
     public void CommitTransaction()
     {
+        if (_disposed)
+        {
+            throw new MemberAccessException("UnitOfWork is already disposed!");
+        }
+
         if (_transaction == null)
         {
             return;
@@ -67,6 +87,11 @@ public class UnitOfWork : IUnitOfWork
 
     public void RollbackTransaction()
     {
+        if (_disposed)
+        {
+            throw new MemberAccessException("UnitOfWork is already disposed!");
+        }
+
         if (_transaction == null)
         {
             return;
@@ -77,7 +102,20 @@ public class UnitOfWork : IUnitOfWork
         _transaction = null;
     }
 
-    public void Save() => _dbContext.SaveChanges();
+    public void Save()
+    {
+        if (_disposed)
+        {
+            throw new MemberAccessException("UnitOfWork is already disposed!");
+        }
 
-    public void Dispose() => _dbContext.Dispose();
+        _dbContext.SaveChanges();
+    }
+
+    public void Dispose()
+    {
+        _disposed = true;
+
+        _dbContext.Dispose();
+    }
 }
