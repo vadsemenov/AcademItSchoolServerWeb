@@ -45,7 +45,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.DataAccess", "Pho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGrpcServer", "SimpleGrpcServer\SimpleGrpcServer.csproj", "{62363E38-582B-4B14-A87E-09EC63EA4EF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGrpcClient", "SimpleGrpcClient\SimpleGrpcClient.csproj", "{E2A77AA3-7A1D-4E6D-AD25-B7C1C9141A44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGrpcClient", "SimpleGrpcClient\SimpleGrpcClient.csproj", "{E2A77AA3-7A1D-4E6D-AD25-B7C1C9141A44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopShelfJob", "TopShelfJob\TopShelfJob.csproj", "{8A144846-132D-4E39-B89D-FBBEC31C7CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartzTask", "QuartzTask\QuartzTask.csproj", "{B5F454A6-C503-4742-BCFB-B176CE5A48DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostedServiceTask", "HostedServiceTask\HostedServiceTask.csproj", "{2F91C170-B303-4FED-A412-25B3C61DFC00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +147,18 @@ Global
 		{E2A77AA3-7A1D-4E6D-AD25-B7C1C9141A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2A77AA3-7A1D-4E6D-AD25-B7C1C9141A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2A77AA3-7A1D-4E6D-AD25-B7C1C9141A44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A144846-132D-4E39-B89D-FBBEC31C7CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A144846-132D-4E39-B89D-FBBEC31C7CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A144846-132D-4E39-B89D-FBBEC31C7CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A144846-132D-4E39-B89D-FBBEC31C7CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F454A6-C503-4742-BCFB-B176CE5A48DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F454A6-C503-4742-BCFB-B176CE5A48DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F454A6-C503-4742-BCFB-B176CE5A48DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F454A6-C503-4742-BCFB-B176CE5A48DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F91C170-B303-4FED-A412-25B3C61DFC00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F91C170-B303-4FED-A412-25B3C61DFC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F91C170-B303-4FED-A412-25B3C61DFC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F91C170-B303-4FED-A412-25B3C61DFC00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
